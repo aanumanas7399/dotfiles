@@ -75,10 +75,8 @@ brew 'tlrc'
 
 cask 'aldente', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'AlDente'"
 cask 'boring-notch', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'boringNotch'" if ::OS::Mac::version >= 14
-cask 'brave-browser'
 cask 'clocker', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'Clocker'"
-cask 'firefox@nightly' #, greedy: true
-cask 'google-chrome@beta'
+cask 'google-chrome'
 cask 'jordanbaird-ice@beta', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'Ice'" if ::OS::Mac::version >= 14
 cask 'keepassxc@beta'
 cask 'ollama-app', restart_service: :changed
@@ -88,8 +86,7 @@ cask 'protonvpn'
 cask 'rancher' # if ::OS::Mac::version < 26
 cask 'raycast', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'Raycast'"
 cask 'stats', postinstall: "\"${HOME}/.dotfiles/scripts/setup-login-item.sh\" 'Stats'"
-cask 'vscodium@insiders'   # TODO: Doesn't handle 'Remote Containers' and GH-based auto-syncing when compared to VSCode
-cask 'zen@twilight'
+cask 'visual-studio-code'
 cask 'zoom'
 
 # brew 'mas'
@@ -134,8 +131,6 @@ if is_vscode_installed
   vscode 'orta.vscode-jest'
   vscode 'redhat.vscode-yaml'
   vscode 'richie5um2.vscode-sort-json'
-  vscode 'shan.code-settings-sync'
-  vscode 'shopify.ruby-lsp'
   vscode 'tchayen.markdown-links'
   vscode 'tyriar.sort-lines'
   vscode 'vscode-icons-team.vscode-icons'
