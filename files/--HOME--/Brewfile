@@ -85,10 +85,11 @@ brew 'tlrc'
 cask 'aldente', postinstall: "\"#{setup_login_items_script}\" -a 'AlDente'"
 cask 'brave-browser'
 cask 'clocker', postinstall: "\"#{setup_login_items_script}\" -a 'Clocker'"
-cask 'firefox@nightly' #, greedy: true
-cask 'google-chrome@beta'
+cask 'google-chrome'
+cask 'jetbrains-toolbox'
 cask 'jordanbaird-ice@beta', postinstall: "\"#{setup_login_items_script}\" -a 'Ice'" if ::OS::Mac::version >= 14
 cask 'keepassxc@beta'
+cask 'microsoft-remote-desktop'
 cask 'ollama-app', restart_service: :changed
 cask 'onlyoffice'
 cask 'pearcleaner'
@@ -96,8 +97,8 @@ cask 'protonvpn'
 cask 'rancher' # if ::OS::Mac::version < 26
 cask 'raycast', postinstall: "\"#{setup_login_items_script}\" -a 'Raycast'"
 cask 'stats', postinstall: "\"#{setup_login_items_script}\" -a 'Stats'"
-cask 'zed@preview'
-cask 'zen@twilight'
+cask 'tableplus'
+cask 'visual-studio-code'
 cask 'zoom'
 
 # brew 'mas'
@@ -105,40 +106,50 @@ cask 'zoom'
 
 # VSCode extensions
 # Note: I don't want brew to silently install VS Code (which is what it does currently if the following lines are present but it doesn't find the executable 'code'!)
-# is_vscode_installed = !`PATH="/opt/homebrew/bin:/usr/local/bin:${PATH}" which code`.chomp.empty?  # explicitly set PATH since the shell being opened doesn't run the login configs
-# if is_vscode_installed
-#   vscode 'britesnow.vscode-toggle-quotes'
-#   vscode 'codezombiech.gitignore'
-#   vscode 'davidanson.vscode-markdownlint'
-#   vscode 'dbaeumer.vscode-eslint'
-#   vscode 'digitalbrainstem.javascript-ejs-support'
-#   vscode 'drcika.apc-extension'
-#   vscode 'editorconfig.editorconfig'
-#   vscode 'esbenp.prettier-vscode'
-#   vscode 'genuitecllc.codetogether'
-#   vscode 'github.vscode-github-actions'
-#   vscode 'google.geminicodeassist'
-#   vscode 'ibm.output-colorizer'
-#   vscode 'mechatroner.rainbow-csv'
-#   vscode 'mikestead.dotenv'
-#   vscode 'mkhl.direnv'
-#   vscode 'ms-azuretools.vscode-containers'
-#   vscode 'ms-azuretools.vscode-docker'
-#   vscode 'ms-vscode.atom-keybindings'
-#   vscode 'ms-vscode.vscode-typescript-next'
-#   vscode 'oderwat.indent-rainbow'
-#   vscode 'orta.vscode-jest'
-#   vscode 'redhat.vscode-yaml'
-#   vscode 'richie5um2.vscode-sort-json'
-#   vscode 'shan.code-settings-sync'
-#   vscode 'shopify.ruby-lsp'
-#   vscode 'tchayen.markdown-links'
-#   vscode 'tyriar.sort-lines'
-#   vscode 'vscode-icons-team.vscode-icons'
-#   vscode 'wayou.vscode-todo-highlight'
-#   vscode 'wmaurer.change-case'
-#   vscode 'yzhang.markdown-all-in-one'
-# end
+is_vscode_installed = !`PATH="/opt/homebrew/bin:/usr/local/bin:${PATH}" which code`.chomp.empty?  # explicitly set PATH since the shell being opened doesn't run the login configs
+if is_vscode_installed
+  # This is failing on different machines
+  # vscode 'eamodio.gitlens'
+  # vscode 'formulahendry.code-runner'
+  # vscode 'nicolasvuillamy.vscode-groovy-lint'
+  # vscode 'redhat.java'
+  # vscode 'sonarsource.sonarlint-vscode'
+  # vscode 'vscjava.vscode-java-debug'
+  # vscode 'vscjava.vscode-java-pack'
+  # vscode 'vscjava.vscode-java-test'
+  # vscode 'vscjava.vscode-lombok'
+  # vscode 'wholroyd.jinja'
+  vscode 'brandonkirbyson.vscode-animations'
+  vscode 'britesnow.vscode-toggle-quotes'
+  vscode 'codezombiech.gitignore'
+  vscode 'davidanson.vscode-markdownlint'
+  vscode 'dbaeumer.vscode-eslint'
+  vscode 'digitalbrainstem.javascript-ejs-support'
+  vscode 'drcika.apc-extension'
+  vscode 'editorconfig.editorconfig'
+  vscode 'esbenp.prettier-vscode'
+  vscode 'genuitecllc.codetogether'
+  vscode 'github.vscode-github-actions'
+  vscode 'google.geminicodeassist'
+  vscode 'ibm.output-colorizer'
+  vscode 'mechatroner.rainbow-csv'
+  vscode 'mikestead.dotenv'
+  vscode 'mkhl.direnv'
+  vscode 'ms-azuretools.vscode-containers'
+  vscode 'ms-azuretools.vscode-docker'
+  vscode 'ms-vscode.atom-keybindings'
+  vscode 'ms-vscode.vscode-typescript-next'
+  vscode 'oderwat.indent-rainbow'
+  vscode 'orta.vscode-jest'
+  vscode 'redhat.vscode-yaml'
+  vscode 'richie5um2.vscode-sort-json'
+  vscode 'tchayen.markdown-links'
+  vscode 'tyriar.sort-lines'
+  vscode 'vscode-icons-team.vscode-icons'
+  vscode 'wayou.vscode-todo-highlight'
+  vscode 'wmaurer.change-case'
+  vscode 'yzhang.markdown-all-in-one'
+end
 
 # ----------------------------------------------------------------------------------------------------------
 # Moved these brew and cask lines to clean up the noise from the above alphabetically-sorted lists
